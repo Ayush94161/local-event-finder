@@ -3,6 +3,8 @@ import { useState } from "react";
 
 function App() {
   const [search, setSearch] = useState("");
+  const [darkMode, setDarkMode] = useState(true);
+  const [favorites, setFavorites] = useState([]);
 
   const events = [
     {
@@ -26,11 +28,22 @@ function App() {
     event.title.toLowerCase().includes(search.toLowerCase())
   );
 
-  return (
-    <div className="app">
+  const addFavorite = (event) => {
+    setFavorites([...favorites, event.title]);
+  };
 
+  return (
+    <div className={darkMode ? "app dark" : "app light"}>
+      
       <nav className="navbar">
         <h2>EventHub</h2>
+
+        <button
+          className="mode-btn"
+          onClick={() => setDarkMode(!darkMode)}
+        >
+          {darkMode ? "Light Mode" : "Dark Mode"}
+        </button>
       </nav>
 
       <h1>Local Event Finder</h1>
@@ -48,9 +61,18 @@ function App() {
             <h2>{event.title}</h2>
             <p>📍 {event.location}</p>
             <p>📅 {event.date}</p>
+
+            <button
+              className="fav-btn"
+              onClick={() => addFavorite(event)}
+            >
+              ❤️ Favorite
+            </button>
           </div>
         ))}
       </div>
+
+      <h3>Favorites: {favorites.join(", ")}</h3>
     </div>
   );
 }

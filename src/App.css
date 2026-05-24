@@ -1,8 +1,18 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
+}
+
+.dark {
   background: #111827;
   color: white;
+  min-height: 100vh;
+}
+
+.light {
+  background: #f3f4f6;
+  color: black;
+  min-height: 100vh;
 }
 
 .app {
@@ -12,14 +22,9 @@ body {
 
 .navbar {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
   padding: 20px;
-  font-size: 24px;
-  font-weight: bold;
-}
-
-h1 {
-  margin-bottom: 20px;
 }
 
 .search {
@@ -48,4 +53,13 @@ h1 {
 .card:hover {
   transform: translateY(-8px);
   background: #374151;
+}
+
+.mode-btn,
+.fav-btn {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
 }
