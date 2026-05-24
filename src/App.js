@@ -1,6 +1,9 @@
 import "./App.css";
+import { useState } from "react";
 
 function App() {
+  const [search, setSearch] = useState("");
+
   const events = [
     {
       title: "Music Festival",
@@ -19,18 +22,28 @@ function App() {
     },
   ];
 
+  const filteredEvents = events.filter((event) =>
+    event.title.toLowerCase().includes(search.toLowerCase())
+  );
+
   return (
     <div className="app">
+
+      <nav className="navbar">
+        <h2>EventHub</h2>
+      </nav>
+
       <h1>Local Event Finder</h1>
 
       <input
         type="text"
         placeholder="Search events..."
         className="search"
+        onChange={(e) => setSearch(e.target.value)}
       />
 
       <div className="event-container">
-        {events.map((event, index) => (
+        {filteredEvents.map((event, index) => (
           <div className="card" key={index}>
             <h2>{event.title}</h2>
             <p>📍 {event.location}</p>

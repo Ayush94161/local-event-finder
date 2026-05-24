@@ -10,6 +10,14 @@ body {
   text-align: center;
 }
 
+.navbar {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
 h1 {
   margin-bottom: 20px;
 }
@@ -38,5 +46,6 @@ h1 {
 }
 
 .card:hover {
-  transform: scale(1.03);
+  transform: translateY(-8px);
+  background: #374151;
 }
